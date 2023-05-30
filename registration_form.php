@@ -1,14 +1,19 @@
-<?php 
+<?php
 include('validation/validate_registration_form.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Bootstrap links -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <!-- sweet alert link -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <!-- JSquery Ui datepicker links -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -17,20 +22,29 @@ include('validation/validate_registration_form.php');
 
   <title>Registration Form</title>
   <style>
-    body{
+    body {
       background-color: #0F416F;
     }
-    .btn-color{
+
+    .btn-color {
       background-color: #0F416F;
     }
   </style>
+
+  <script>
+    function text(x) {
+      if (x == 0) document.getElementById("registration").style.display = "block";
+      else document.getElementById("registration").style.display = "none";
+      return;
+    }
+  </script>
 </head>
-<body class="">
+
+<body onload="text(1)">
   <div class="container">
     <div class="row d-flex justify-content-center my-5">
       <div class="col-md-10 col-lg-8 col-xl-6">
-        <form class="row g-3 border rounded p-4 my-1 bg-body-secondary text-body needs-validation"
-         method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" novalidate enctype="multipart/form-data">
+        <form class="row g-3 border rounded p-4 my-1 bg-body-secondary text-body needs-validation" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" novalidate enctype="multipart/form-data">
           <h3 class="text-center border-bottom pb-2 border-dark text-body-secondary">REGISTRATION FORM</h3>
 
           <!-- fname field -->
@@ -51,7 +65,7 @@ include('validation/validate_registration_form.php');
             <label for="lname" class="form-label">Last Name</label>
             <input type="text" class="form-control" id="lname" name="lname" autocomplete="off" required>
             <div class="invalid-feedback">
-               Please fill the above field.
+              Please fill the above field.
             </div>
             <div class="valid-feedback">
               Looks good!
@@ -59,18 +73,25 @@ include('validation/validate_registration_form.php');
             <!-- php form validation error -->
             <div class="text-danger"><?php echo $errors['lname']; ?></div>
           </div>
-          
+
           <!-- KU student -->
           <div class="form-group">
             <label for="kuOrNonKuStudent">Are you a KU student?</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="ku_student" id="ku_student" value="yes" required>
+              <input class="form-check-input" type="radio" name="ku_student" id="ku_student" value="yes" required onclick="text(0)">
               <label class="form-check-label" for="ku_student">
                 Yes
               </label>
+
+              <!-- registration -->
+              <div id="registration" class="col-md-6">
+                <label for="regNumber" class="form-label">Registration Number</label>
+                <input type="text" class="form-control" name="regNumber" id="regNumber">
+              </div>
             </div>
+
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="ku_student" id="nonKUstudent" value="no" required>
+              <input class="form-check-input" type="radio" name="ku_student" id="nonKUstudent" value="no" required onclick="text(1)">
               <label class="form-check-label" for="nonKUstudent">
                 No
               </label>
@@ -85,7 +106,7 @@ include('validation/validate_registration_form.php');
             <!-- php form validation error -->
             <div class="text-danger"><?php echo $errors['ku_student']; ?></div>
           </div>
-   
+
           <!-- ID Number -->
           <div class="col-12">
             <label for="id_number" class="form-label">ID Number:</label>
@@ -232,7 +253,7 @@ include('validation/validate_registration_form.php');
             <select name="innovation_category" id="innovation_category" class="form-select" required>
               <option value="" selected disabled>Choose...</option>
               <option value="Business and Professional Services">Business and Professional Services</option>
-              <option value="Information  and Communication Technology">Information  and Communication Technology</option>
+              <option value="Information  and Communication Technology">Information and Communication Technology</option>
               <option value="Marketing and Communication">Marketing and Communication</option>
               <option value="Manufacturing and Construction">Manufacturing and Construction</option>
               <option value="Transport and Logistics">Transport and Logistics</option>
@@ -252,10 +273,10 @@ include('validation/validate_registration_form.php');
             <div class="valid-feedback">
               Looks good!
             </div>
-                        <!-- php form validation error -->
+            <!-- php form validation error -->
             <div class="text-danger"><?php echo $errors['innovation_category']; ?></div>
           </div>
-          
+
           <!-- submit button -->
           <div class="col-12 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary border-0 btn-color">Submit</button>
@@ -267,18 +288,16 @@ include('validation/validate_registration_form.php');
 
 
   <!-- Bootstrap Js links -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <!--datepicker -->
   <script>
-    $( function() {
-      $( "#date_incubated" ).datepicker({
+    $(function() {
+      $("#date_incubated").datepicker({
         maxDate: 0
       });
     });
-
-
+    // 
+    // 
     // // Example starter JavaScript for disabling form submissions if there are invalid fields
     // (() => {
     //   'use strict'
@@ -300,4 +319,5 @@ include('validation/validate_registration_form.php');
     // })()
   </script>
 </body>
+
 </html>

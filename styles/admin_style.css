@@ -1,0 +1,89 @@
+*{
+    box-sizing: border-box;
+}
+
+.navbar-wrapper{
+    padding: 0;
+    margin: 0;
+}
+
+.btn-toggler{
+    color: #0F416F;
+    font-size: 40px;
+}
+
+.btn-toggler:hover{
+    color: orangered;
+}
+
+.main-header{
+    color: #0F416F;
+}
+
+/* end of the navbar style */
+/* beginning of the sidebar style */
+
+.sidebar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    width: 260px;
+    background-color: #0F416F;
+    position: fixed;
+    height: 100vh;
+    overflow: auto;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px 15px;
+    white-space: nowrap;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.sidebar li a:hover{
+    background: orangered;
+    color: white;
+}
+
+.sidebar li a span {
+    margin-left: 10px;
+}
+
+
+.main-content{
+    margin-left: 20%;
+    padding: 10px;
+    max-width: 80%;
+    transition: all 0.5s ease;
+}
+
+.sidebar.menuMinimized ul {
+    width: 60px;
+}
+
+.sidebar.menuMinimized ul a {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar.menuMinimized ul span{
+    display: none;
+}
+
+.main-content.menuMinimizedLayout {
+    margin-left: 60px;
+    padding-left: 20px;
+    max-width: calc(100% - 60px);
+    transition: all 0.5s ease;
+}
+
+
+
